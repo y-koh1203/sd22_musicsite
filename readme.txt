@@ -3,7 +3,7 @@ wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 DBの運用について
 
 1.必要ファイルの読み込み
-require $_SERVER['DOCUMENT_ROOT'] . '/modules/class/error.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/modules/class/Database.php';
 クラスを使用したいphpファイルにこれを追記してください。
 ファイルの読み込みなので、可能な限りソースコードの一番上の方に追記するのが望ましいです。
 
