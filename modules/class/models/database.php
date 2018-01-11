@@ -6,10 +6,10 @@
 
  //require $_SERVER['DOCUMENT_ROOT'] . '/modules/class/error.php';
 
-class Database{
-    protected $dsn = 'mysql:host=localhost;port=3306;dbname=sd22_master';//左から,ホスト名,ポート番号,DB名
-    protected $user = 'root';// ユーザー名
-    protected $pass = 'root';//パスワード
+class database{
+    private $dsn = 'mysql:host=localhost;port=3306;dbname=sd22_master';//左から,ホスト名,ポート番号,DB名
+    private $user = 'root';// ユーザー名
+    private $pass = 'root';//パスワード
     public $dbh; //DBハンドラ
     public $stmt; //DBステートメント
 
@@ -24,20 +24,19 @@ class Database{
     private function openPDO(){
         try{
             $this->dbh = new PDO(
-                $this->dsn, $this->$user, $this->$pass,
-                array( PDO::MYSQL_ATTR_INIT_COMMAND => "SET CHARACTER SET `utf8`",
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_EMULATE_PREPARES => false)     
-            );       
-
-            //トランザクションを初期化する
-            $this->dbh->beginTransaction();
+                $this->dsn, $this->user, $this->pass,
+                array(
+                    PDO::MYSQL_ATTR_INIT_COMMAND => "SET CHARACTER SET `utf8`",
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_EMULATE_PREPARES => false
+                )
+            );
 
         }catch (PDOException $e){
             print('Connection failed:'.$e->getMessage());
             die();
         }
-        
+
         //display errors
         $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         return $this->dbh;
@@ -65,43 +64,47 @@ class Database{
 
     /**
      * 入力されたsqlを元にselect文を実行
-     * @param string $table 入力されたsql文
+     * @param string $table テーブル名
      * @param array $arrColumns 入力されたsql文
-     * @param array $arrParams 入力されたsql文
+     * @param array $arrParams
      */  
     public function insert($table,$arrColumns,$arrParams){
-        if(count($arrColumns) != count($arrParams)){
-            return 'error:array count no match';
-            die();
-        }
         $pdo = $this->openPDO();
-        $cnt = count($arrColumns);
-        $limit = $cnt-1;
+
+        $cntCol = count($arrColumns);
+        $cntPar = count($arrParams);
+        $limit = $cntCol-1;
         $holder = '';
-        $insertParams = array();
         
+        //クエリの生成
         $query = 'insert into '.$table.' (';
-        for($i = 0;$i < $cnt;$i++){
+        for($i = 0;$i < $cntCol;$i++){
             if($i != $limit){
                 $query .= $arrColumns[$i].',';
                 $holder .= ':'.$arrColumns[$i].',';
-                //$arrBinders[] = ':'.$arrColumns[$i];
-                $insertParams = $insertParams + array(':'.$arrColumns[$i] => $arrParams[$i]);
-     
+                $arrBinders[] = ':'.$arrColumns[$i];
             }else{
                 $query .= $arrColumns[$i];     
                 $holder .= ':'.$arrColumns[$i];
-                //$arrBinders[] = ':'.$arrColumns[$i];
-                $insertParams = $insertParams + array(':'.$arrColumns[$i] => $arrParams[$i]);
+                $arrBinders[] = ':'.$arrColumns[$i];
             }     
         }
-      
         $query .= ') values ('.$holder.') ;';
-        var_dump($query);
-        var_dump($insertParams);
-        
+
         $stmt = $pdo->prepare($query);
-        $stmt->execute($insertParams);
+
+        $lim2 = $cntPar-1;
+        for($i = 0;$i <= $lim2;$i++){
+            for($j = 0;$j <= $limit;$j++) {
+                if (is_string($arrParams[$i][$j])) {
+                    echo $arrBinders[$j], ',' . $arrParams[$i][$j];
+                    $stmt->bindParam($arrBinders[$j], $arrParams[$i][$j], PDO::PARAM_STR);
+                } else if (is_int($arrParams[$i][$j])) {
+                    $stmt->bindValue($arrBinders[$j], $arrParams[$i][$j], PDO::PARAM_INT);
+                }
+            }
+            $stmt->execute();
+        }
         $this->closePDO();
     }
 
@@ -112,5 +115,4 @@ class Database{
     // public function update(){
 
     // }
-} 
-?>
+}
