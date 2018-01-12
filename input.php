@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
-<form action="insert.php" method="post">
+<form action="uploading_process.php" method="post">
 <table>
 	<tr>
 		<td>楽曲ファイル</td>
@@ -32,9 +34,9 @@
 		<td>ジャンル</td>
 		<td>
 			<select name="genre">
-				<option value="sample1">サンプル1</option>
-				<option value="sample2">サンプル2</option>
-				<option value="sample3">サンプル3</option>
+				<option value="01">サンプル1</option>
+				<option value="02">サンプル2</option>
+				<option value="03">サンプル3</option>
 			</select>
 		</td>
 
