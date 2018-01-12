@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
-<form action="uploading_process.php" method="post">
+<form action="insert.php" method="post">
 <table>
 	<tr>
 		<td>楽曲ファイル</td>
