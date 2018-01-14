@@ -7,9 +7,9 @@
  //require $_SERVER['DOCUMENT_ROOT'] . '/modules/class/error.php';
 
 class database{
-    private $dsn = 'mysql:host=localhost;port=3306;dbname=sd22_master';//左から,ホスト名,ポート番号,DB名
+    private $dsn = 'mysql:host=127.0.0.1;port=3306;dbname=sd_master';//左から,ホスト名,ポート番号,DB名
     private $user = 'root';// ユーザー名
-    private $pass = 'root';//パスワード
+    private $pass = '';//パスワード
     public $dbh; //DBハンドラ
     public $stmt; //DBステートメント
 
@@ -33,7 +33,7 @@ class database{
             );
 
         }catch (PDOException $e){
-            print('Connection failed:'.$e->getMessage());
+            print('接続エラー:'.$e->getMessage());
             die();
         }
 
@@ -115,11 +115,5 @@ class database{
     // public function update(){
 
     // }
-<<<<<<< HEAD:modules/class/Database.php
 } 
 ?>
-?>
-?>
-=======
-}
->>>>>>> 532ae2ace1fc0ca4b7989b1f29bbedc9103d9464:modules/class/models/database.php

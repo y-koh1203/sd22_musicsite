@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,9 +34,9 @@
 		<td>ジャンル</td>
 		<td>
 			<select name="genre">
-				<option value="sample1">サンプル1</option>
-				<option value="sample2">サンプル2</option>
-				<option value="sample3">サンプル3</option>
+				<option value="01">サンプル1</option>
+				<option value="02">サンプル2</option>
+				<option value="03">サンプル3</option>
 			</select>
 		</td>
 
