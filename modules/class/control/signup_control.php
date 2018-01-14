@@ -8,7 +8,6 @@
 
 require $_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/modules/class/models/database.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/modules/class/models/dispatch.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/modules/class/util.php';
 
 $pdo = new database();
 
@@ -42,12 +41,7 @@ if(!empty($_POST)){
     $tbl = 'members';
     $col = array('member_name','nickname','password','mail_address','login_id','m_status_id');
     $member_status = array(
-        array(
-            '山もちょ','yamamo','12345678','aaa@nrnr.jp','mmm111122','1'
-        ),
-        array(
-            $name,$nickname,$pass,$mail,$login_id,'1'
-        )
+        $name,$nickname,$pass,$mail,$login_id,'1'
     );
 
     $pdo->insert($tbl,$col,$member_status);
@@ -69,5 +63,6 @@ if(!empty($_POST)){
 </head>
 <body>
     <?= $name?> 
+    <?=$num?>
 </body>
 </html>

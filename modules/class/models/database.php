@@ -5,6 +5,7 @@
  */
 
  //require $_SERVER['DOCUMENT_ROOT'] . '/modules/class/error.php';
+ require $_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/modules/lib/util.php';
 
 class database{
     private $dsn = 'mysql:host=127.0.0.1;port=3306;dbname=sd_master';//左から,ホスト名,ポート番号,DB名
@@ -63,7 +64,7 @@ class database{
     }
 
     /**
-     * 入力されたsqlを元にselect文を実行
+     * 入力されたsqlをパラメータでinsert文を実行
      * @param string $table テーブル名
      * @param array $arrColumns 入力されたsql文
      * @param array $arrParams
@@ -73,7 +74,9 @@ class database{
 
         $cntCol = count($arrColumns);
         $cntPar = count($arrParams);
+        $cntDepth = arrayDepth($arrParams);
         $limit = $cntCol-1;
+        $lim2 = $cntPar-1;
         $holder = '';
         
         //クエリの生成
@@ -93,16 +96,26 @@ class database{
 
         $stmt = $pdo->prepare($query);
 
-        $lim2 = $cntPar-1;
-        for($i = 0;$i <= $lim2;$i++){
-            for($j = 0;$j <= $limit;$j++) {
-                if (is_string($arrParams[$i][$j])) {
-                    $stmt->bindParam($arrBinders[$j], $arrParams[$i][$j], PDO::PARAM_STR);
-                } else if (is_int($arrParams[$i][$j])) {
-                    $stmt->bindValue($arrBinders[$j], $arrParams[$i][$j], PDO::PARAM_INT);
+        if($cntDepth == 1){
+            for($i = 0;$i <= $limit;$i++) {
+                if (is_string($arrParams[$i])) {
+                    $stmt->bindParam($arrBinders[$i], $arrParams[$i], PDO::PARAM_STR);
+                } else if (is_int($arrParams[$i])) {
+                    $stmt->bindValue($arrBinders[$i], $arrParams[$i], PDO::PARAM_INT);
                 }
             }
             $stmt->execute();
+        }else{
+            for($i = 0;$i <= $lim2;$i++){
+                for($j = 0;$j <= $limit;$j++) {
+                    if (is_string($arrParams[$i][$j])) {
+                        $stmt->bindParam($arrBinders[$j], $arrParams[$i][$j], PDO::PARAM_STR);
+                    } else if (is_int($arrParams[$i][$j])) {
+                        $stmt->bindValue($arrBinders[$j], $arrParams[$i][$j], PDO::PARAM_INT);
+                    }
+                }
+                $stmt->execute();
+            }
         }
         $this->closePDO();
     }
