@@ -27,7 +27,7 @@ try {
   $stmt = $dbh->prepare($sql);
   
   // 挿入する値を配列に格納する
-  $params = array(':musicId' => '00006', ':bandId' => '', ':genreId' => '', ':title' => '', ':releaseDate' => '', ':price' => '', ':lyric' => '');
+  $params = array(':musicId' => '00007', ':bandId' => '', ':genreId' => '', ':title' => $_POST['musicName'], ':releaseDate' => date("Y/m/d"), ':price' => $_POST['price'], ':lyric' => $_POST['lyrics']);
   
   // 挿入する値が入った変数をexecuteにセットしてSQLを実行
   $stmt->execute($params);
