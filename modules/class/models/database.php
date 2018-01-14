@@ -97,7 +97,6 @@ class database{
         for($i = 0;$i <= $lim2;$i++){
             for($j = 0;$j <= $limit;$j++) {
                 if (is_string($arrParams[$i][$j])) {
-                    echo $arrBinders[$j], ',' . $arrParams[$i][$j];
                     $stmt->bindParam($arrBinders[$j], $arrParams[$i][$j], PDO::PARAM_STR);
                 } else if (is_int($arrParams[$i][$j])) {
                     $stmt->bindValue($arrBinders[$j], $arrParams[$i][$j], PDO::PARAM_INT);

@@ -12,7 +12,7 @@
     <h1>TOP</h1>
     <ul>
         <li><a href="signin.php">ログイン</a></li>
-        <li><a href="signup.php">会員登録</a></li>
+        <li><a href="signup/signup.php">会員登録</a></li>
     </ul>
 </body>
 </html>

@@ -6,17 +6,24 @@
  * Time: 16:45
  */
 
-require $_SERVER['DOCUMENT_ROOT'] . '/modules/class/models/database.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/modules/class/models/dispatch.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/modules/class/util.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/modules/class/models/database.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/modules/class/models/dispatch.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/modules/class/util.php';
 
 $pdo = new database();
 
 if(!empty($_POST)){
-    $name = filter_input(INPUT_POST,'name',FILTER_NULL_ON_FAILURE);
-    $pass = filter_input(INPUT_POST,'pass',FILTER_NULL_ON_FAILURE);
+    $name = filter_input(INPUT_POST,'user_name',FILTER_SANITIZE_STRING);
+    $nickname = filter_input(INPUT_POST,'nickname',FILTER_SANITIZE_STRING);
+    $pass = filter_input(INPUT_POST,'pass',FILTER_SANITIZE_STRING);
+    $mail = filter_input(INPUT_POST,'email',FILTER_SANITIZE_EMAIL);
+    $login_id = filter_input(INPUT_POST,'login_id',FILTER_SANITIZE_STRING);
 
     if(!isset($name)){
+        //エラー遷移
+    }
+
+    if(!isset($nickname)){
         //エラー遷移
     }
 
@@ -24,26 +31,43 @@ if(!empty($_POST)){
         //エラー遷移
     }
 
-    $sql = 'select member_id from members where member_id = 00000';
+    if(!isset($name)){
+        //エラー遷移
+    }
+
+    if(!isset($login_id)){
+        //エラー遷移
+    }
 
     $tbl = 'members';
-    $col = array('member_id','member_name','nickname','user_pass','mail_address','login_id','m_status_id');
+    $col = array('member_name','nickname','password','mail_address','login_id','m_status_id');
     $member_status = array(
         array(
-            '00002','山もちょ','yamamo','12345678','aaa@nrnr.jp','mmm111122','1'
+            '山もちょ','yamamo','12345678','aaa@nrnr.jp','mmm111122','1'
         ),
         array(
-            '00003','山もちょ','yamamo','12345678','aaa@nrnr.jp','mmm111122','1'
+            $name,$nickname,$pass,$mail,$login_id,'1'
         )
     );
 
-    $res = $pdo->select($sql);
-
     $pdo->insert($tbl,$col,$member_status);
 
-    $url = '../../../views/signup_success.php';
+    $url = '../../../views/signup/signup_success.php';
     header('Location: '.$url);
     exit;
 }else{
     echo 'aaa';
 }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <?= $name?> 
+</body>
+</html>
