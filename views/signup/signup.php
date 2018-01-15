@@ -23,7 +23,7 @@
                         $('#check_msg').text('この名前は使用できます!');
                         $('#check_msg').css('color','green');
                     }else{
-                        $('#check_msg').text('この名前は使用できません。!');
+                        $('#check_msg').text('この名前は使用できません!');
                         $('#check_msg').css('color','red');
                     }
                 }).fail(function(){

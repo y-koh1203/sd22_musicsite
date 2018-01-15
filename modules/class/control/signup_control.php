@@ -19,7 +19,7 @@ if(!empty($_POST)){
     $login_id = filter_input(INPUT_POST,'login_id',FILTER_SANITIZE_STRING);
 
     if(!isset($name)){
-        //エラー遷移
+        //
     }
 
     if(!isset($nickname)){
@@ -50,19 +50,7 @@ if(!empty($_POST)){
     header('Location: '.$url);
     exit;
 }else{
-    echo 'aaa';
+    //不正遷移
+    header();
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <?= $name?> 
-    <?=$num?>
-</body>
-</html>
+
