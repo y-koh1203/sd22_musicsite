@@ -8,7 +8,7 @@
  require $_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/modules/lib/util.php';
 
 class database{
-    private $dsn = 'mysql:host=127.0.0.1;port=3306;dbname=sd_master';//左から,ホスト名,ポート番号,DB名
+    private $dsn = 'mysql:host=127.0.0.1;port=3306;dbname=sd_master;';//左から,ホスト名,ポート番号,DB名
     private $user = 'root';// ユーザー名
     private $pass = '';//パスワード
     public $dbh; //DBハンドラ
@@ -27,7 +27,6 @@ class database{
             $this->dbh = new PDO(
                 $this->dsn, $this->user, $this->pass,
                 array(
-                    PDO::MYSQL_ATTR_INIT_COMMAND => "SET CHARACTER SET `utf8`",
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_EMULATE_PREPARES => false
                 )

@@ -36,12 +36,16 @@
 
 </script>
 <body>
-    <form action="../../modules/class/control/signup_band_control.php" method="post">
-        バンド名：<input type="text" name="band_name" id="name_box"><br>
-        パスワード：<input type="password" name="pass"><br>
-        mail<input type="email" name="email" id="bb"><br>
-        login id <input type="text" name="login_id" id="id_box"><span id="check_msg"></span><br>
-        <button type="submit">登録</button>
-    </form>
+    <!-- ここから -->
+    <div id="main">
+        <form action="../../modules/class/control/signup_band_control.php" method="post">
+            バンド名：<input type="text" name="band_name" id="name_box"><br>
+            パスワード：<input type="password" name="pass"><br>
+            mail<input type="email" name="email" id="bb"><br>
+            login id <input type="text" name="login_id" id="id_box"><span id="check_msg"></span><br>
+            <button type="submit">登録</button>
+        </form>
+    </div>
+    <!-- ここまでCSSを適用 -->
 </body>
 </html>

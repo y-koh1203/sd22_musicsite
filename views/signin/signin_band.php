@@ -19,6 +19,8 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- ここから -->
+    <div id="main">
     <h1>ログイン</h1>
     <form action="../../modules/class/control/signin_control.php" method="post">
         <?=$msg.'<br>'?>
@@ -27,5 +29,7 @@
         <input type="hidden" name="user_type" value="2">
         <button type="submit">ログイン</button>
     </form>
+    </div>
+    <!-- ここまでCSSを適用 -->
 </body>
 </html>
