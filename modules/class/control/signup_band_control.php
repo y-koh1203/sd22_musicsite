@@ -12,8 +12,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/modules/class/models/dispat
 $pdo = new database();
 
 if(!empty($_POST)){
-    $name = filter_input(INPUT_POST,'user_name',FILTER_SANITIZE_STRING);
-    $nickname = filter_input(INPUT_POST,'nickname',FILTER_SANITIZE_STRING);
+    $name = filter_input(INPUT_POST,'band_name',FILTER_SANITIZE_STRING);
     $pass = filter_input(INPUT_POST,'pass',FILTER_SANITIZE_STRING);
     $mail = filter_input(INPUT_POST,'email',FILTER_SANITIZE_EMAIL);
     $login_id = filter_input(INPUT_POST,'login_id',FILTER_SANITIZE_STRING);
@@ -38,15 +37,15 @@ if(!empty($_POST)){
         //エラー遷移
     }
 
-    $tbl = 'members';
-    $col = array('member_name','nickname','password','mail_address','login_id','m_status_id');
+    $tbl = 'bands';
+    $col = array('band_name','mail_address','password','login_id','b_status_id');
     $member_status = array(
-        $name,$nickname,$pass,$mail,$login_id,'1'
+        $name,$mail,$pass,$login_id,'1'
     );
 
     $pdo->insert($tbl,$col,$member_status);
 
-    $url = '../../../views/signup/signup_success.php?prev=1';
+    $url = '../../../views/signup/signup_success.php?prev=2';
     header('Location: '.$url);
     exit;
 }else{

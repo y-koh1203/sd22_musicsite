@@ -4,7 +4,13 @@
    
     header('content-type: application/json; charset=utf-8');
     $checkname = $_GET['name'];
-    $sql = 'select member_name from members where member_name = "'.$checkname.'" ;';
+    $type = $_GET['type'];
+    if($type == 1){
+        $tbl = 'members';
+    }else{
+        $tbl = 'bands';
+    }
+    $sql = 'select login_id from '.$tbl.' where login_id = "'.$checkname.'" ;';
     $res = $pdo->select($sql);
     $data = 0;
 

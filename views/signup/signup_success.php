@@ -5,7 +5,10 @@
  * Date: 2018/01/07
  * Time: 9:40
  */
-
+$prev = "";
+if(isset($_GET['prev'])){
+    $prev = $_GET['prev'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -19,7 +22,19 @@
     <h1></h1>
     <h2>登録完了</h2>
     <p>会員登録が完了しました!</p>
-    <p><a href="../signin/signin.php">ログイン画面へ</a></p>
+    <?php
+    if($prev == 1){
+    ?>
+        <!-- ユーザーの会員登録の場合 -->
+        <p><a href="../signin/signin.php">ユーザーログイン画面へ</a></p>
+    <?php
+    }else{
+    ?>
+         <!-- バンドの会員登録の場合 -->
+        <p><a href="../signin/signin_band.php">バンドログイン画面へ</a></p>
+    <?php
+    }
+    ?>
     <p><a href="../index.php">トップページへ</a></p>
 </body>
 </html>

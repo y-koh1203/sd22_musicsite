@@ -12,7 +12,7 @@
         $('#name_box').change(function() {
             str = $('input:text[name="user_name"]').val();
             if(!str == '' || null){
-                data = {'name':str,'type':1};
+                data = {'name':str,'type':2};
                 $.ajax({
                     url:"../../modules/lib/checkname.php", 
                     type: 'get',
@@ -36,9 +36,8 @@
 
 </script>
 <body>
-    <form action="../../modules/class/control/signup_control.php" method="post">
-        ユーザー名：<input type="text" name="user_name" id="name_box"><br>
-        nickname <input type="text" name="nickname" id="aaa"><br>
+    <form action="../../modules/class/control/signup_band_control.php" method="post">
+        バンド名：<input type="text" name="band_name" id="name_box"><br>
         パスワード：<input type="password" name="pass"><br>
         mail<input type="email" name="email" id="bb"><br>
         login id <input type="text" name="login_id" id="cc"><span id="check_msg"></span><br>

@@ -22,9 +22,9 @@
     <h1>ログイン</h1>
     <form action="../../modules/class/control/signin_control.php" method="post">
         <?=$msg.'<br>'?>
-        ログインID :<input type="text" name="login_id" id=""><br>
-        パスワード :<input type="password" name="pass" id=""><br>
-        <input type="hidden" name="user_type" value="1">
+        <input type="text" name="login_id" id=""><br>
+        <input type="password" name="pass" id=""><br>
+        <input type="hidden" name="user_type" value="2">
         <button type="submit">ログイン</button>
     </form>
 </body>
