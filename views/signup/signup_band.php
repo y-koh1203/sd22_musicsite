@@ -9,8 +9,8 @@
 </head>
 <script>
     $(document).ready(function(){
-        $('#name_box').change(function() {
-            str = $('input:text[name="user_name"]').val();
+        $('#id_box').change(function() {
+            str = $('input:text[name="login_id"]').val();
             if(!str == '' || null){
                 data = {'name':str,'type':2};
                 $.ajax({
@@ -40,7 +40,7 @@
         バンド名：<input type="text" name="band_name" id="name_box"><br>
         パスワード：<input type="password" name="pass"><br>
         mail<input type="email" name="email" id="bb"><br>
-        login id <input type="text" name="login_id" id="cc"><span id="check_msg"></span><br>
+        login id <input type="text" name="login_id" id="id_box"><span id="check_msg"></span><br>
         <button type="submit">登録</button>
     </form>
 </body>

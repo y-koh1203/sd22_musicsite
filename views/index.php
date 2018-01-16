@@ -39,20 +39,20 @@
                 <li><a href="../modules/class/control/signout.php">ログアウト</a></li>
                 <li><a href="signup/signup.php">バンドマイページへ</a></li>
             </ul>
-        <?php
-            }
-        }else{
-        ?>
-            <!-- ユーザーがログインしていない場合 -->
-            <ul>
-                <li><a href="signin/signin.php">ログイン</a></li>
-                <li><a href="signin/signin_band.php">バンドとしてログイン</a></li>
-                <li><a href="signup/signup.php">会員登録</a></li>
-                <li><a href="signup/signup_band.php">バンドとして登録</a></li>
-            </ul>
-        <?php
+    <?php
         }
-        ?>
+    }else{
+    ?>
+        <!-- ユーザーがログインしていない場合 -->
+        <ul>
+            <li><a href="signin/signin.php">ログイン</a></li>
+            <li><a href="signin/signin_band.php">バンドとしてログイン</a></li>
+            <li><a href="signup/signup.php">会員登録</a></li>
+            <li><a href="signup/signup_band.php">バンドとして登録</a></li>
+        </ul>
+    <?php
+    }
+    ?>
     </div>
 </body>
 </html>
