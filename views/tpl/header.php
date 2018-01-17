@@ -28,6 +28,7 @@ if($logon_flg == 1){
         <ul>
             <li><a href="../modules/class/control/signout.php">ログアウト</a></li>
             <li><a href="signup/signup.php">バンドマイページへ</a></li>
+            <li><a href="input.php">楽曲を登録</a></li>
         </ul>
 <?php
     }
