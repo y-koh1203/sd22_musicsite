@@ -24,7 +24,7 @@
         <!-- Left Nav Section -->
         <ul class="left">
         <li class="divider"></li>
-        <li class="active"><a href="#">Main Item 1</a></li>
+        <li class="has-dropdown"><a href="#">Main Item 1</a></li>
         <li class="divider"></li>
         <li><a href="#">Main Item 2</a></li>
         <li class="divider"></li>
@@ -126,7 +126,7 @@ if($logon_flg == 1){
         <p><?=$user_name?>さん</p>
         <ul>
             <li><a href="../modules/class/control/signout.php">ログアウト</a></li>
-            <li><a href="signup/signup.php">マイページへ</a></li>
+            <li><a href="../user/mypage.php">マイページへ</a></li>
         </ul>  
         <?php
         }else{
@@ -135,7 +135,7 @@ if($logon_flg == 1){
         <p><?=$user_name?>さん</p>
         <ul>
             <li><a href="../modules/class/control/signout.php">ログアウト</a></li>
-            <li><a href="signup/signup.php">バンドマイページへ</a></li>
+            <li><a href=../user/band_mypage.php>バンドマイページへ</a></li>
             <li><a href="input.php">楽曲を登録</a></li>
         </ul>
 <?php

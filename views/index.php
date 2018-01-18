@@ -16,6 +16,20 @@
     </script>
 </head>
 <body>        
-    <?php include 'tpl/header.php';?>
+    <?php 
+    include 'tpl/header.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/modules/class/models/database.php';
+    ?>
+    <?php
+        $pdo = new database();
+        $res = $pdo->select('select artwork_path,title,band_name from musics inner join bands on musics.band_id = bands.band_id');
+        foreach($res as $youso){
+            foreach($youso as $val){
+                echo $val."<br>"; 
+            }
+        }
+    ?>
+
+    <img src=<?=$_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/assets/artwork/sc.png'?> alt="">
 </body>
 </html>
