@@ -43,6 +43,9 @@
                         }else{
                         ?>
                             <!-- バンドがログインしている場合 -->
+                            <li class="divider"></li>
+                            <li class="name"><h2><a href="#"><?=$user_name?>さん</a></h2></li>
+                            <li class="divider"></li>
                             <li class="has-dropdown not-click"><a href="#">メニュー</a> 
                                 <ul class="dropdown">
                                     <li><a href="<?=$path?>/views/user/band_mypage.php">バンドマイページへ</a></li>
@@ -50,9 +53,6 @@
                                     <li><a href="<?=$path?>/modules/class/control/signout.php">ログアウト</a></li>
                                 </ul>
                             </li>
-                            <li class="divider"></li>
-                            <li class="name"><?=$user_name?></li>
-                            <li class="divider"></li>
                     <?php
                         }
                     }else{

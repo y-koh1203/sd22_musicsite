@@ -11,8 +11,16 @@
     <link rel="stylesheet" href="<?=$path?>/views/stylesheet/common/common.css">
     <title>Document</title>
     <style type="text/css">
+        .form1{
+            margin-top: 5%;
+        }
+
+        .btn_wrap{
+            text-align: center;
+        }
     </style> 
 </head>
+<script src="<?=$path?>/views/script/jquery-3.2.1.min.js"></script> 
 <script>
     $(document).ready(function(){
         $('#id_box').change(function() {
@@ -20,7 +28,7 @@
             if(!str == '' || null){
                 data = {'name':str,'type':2};
                 $.ajax({
-                    url:"<?=$parh?>/modules/lib/checkname.php", 
+                    url: "<?=$path?>/modules/lib/checkname.php", 
                     type: 'get',
                     data: data,
                 }).done(function(data){
@@ -40,7 +48,7 @@
         });
     });
 </script>
-<script src="<?=$path?>/views/script/jquery-3.2.1.min.js"></script> 
+
 <script src="<?=$path?>/views/script/foundation/foundation.min.js"></script>
 <script>
     $(document).foundation();
@@ -50,19 +58,48 @@
         include '../../views/tpl/header.php';
     ?>
     <div class="row">
-        <div class="large-12 column">
-            <div id="main">
-                <form action="<?=$path?>/modules/class/control/signup_band_control.php" method="post">                
-                    <input type="text" name="band_name" id="name_box">
+        <div class="large-12 column"> 
+            <h2>会員登録(バンド)</h2> 
+            <form action="<?=$path?>/modules/class/control/signup_band_control.php" method="post" class="form1">                
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>バンド名
+                            <input type="text" name="band_name" placeholder="insert name here" required/>
+                        </label>
+                    </div>
+                </div>
 
-                    <input type="password" name="pass">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>パスワード
+                            <input type="password" name="pass" placeholder="insert password here" required/>
+                        </label>
+                    </div>
+                </div>
 
-                    <input type="email" name="mail">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>メールアドレス
+                            <input type="email" name="email" placeholder="insert mail address here" required/>
+                        </label>
+                    </div>
+                </div>
 
-                    <input type="text" name="login_id">
-                </form>
-            </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>ログイン用ID　　(重複するIDは使用できません)
+                            <input type="text" id="id_box" name="login_id" placeholder="insert login id here" required/>
+                        </label>
+                        <span id="check_msg">&nbsp;</span>
+                    </div>
+                </div>
+
+                <p class="btn_wrap"><button type="submit"　class="submit_btn">登録</button></p>
+            </form>
         </div>
     </div>
+    <footer>
+        
+    </footer>
 </body>
 </html>
