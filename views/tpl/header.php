@@ -36,7 +36,7 @@
                             <li class="has-dropdown not-click"><a href="#">メニュー</a> 
                                 <ul class="dropdown">
                                     <li><a href="<?=$path?>/views/user/mypage.php">マイページへ</a></li>
-                                    <li><a href="<?=$path?>/views/modules/class/control/signout.php">ログアウト</a></li>
+                                    <li><a href="<?=$path?>/modules/class/control/signout.php">ログアウト</a></li>
                                 </ul>
                             </li> 
                         <?php
