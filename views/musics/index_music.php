@@ -15,5 +15,6 @@ $address =  $root.'assets/artwork/sc.png';
 </head>
 <body>
     <img src=<?=$address?> alt="">
+    
 </body>
 </html>
