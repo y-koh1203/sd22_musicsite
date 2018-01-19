@@ -1,12 +1,26 @@
+<?php
+    $path = 'http://'.$_SERVER['HTTP_HOST'].'/sd22_musicsite';
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="<?=$path?>/views/stylesheet/foundation/foundation.min.css">
+    <link rel="stylesheet" href="<?=$path?>/views/stylesheet/common/common.css">
     <title>Document</title>
-    <script src="../script/jquery-3.2.1.min.js"></script>
+    <style type="text/css">
+        .form1{
+            margin-top: 5%;
+        }
+
+        .btn_wrap{
+            text-align: center;
+        }
+    </style> 
 </head>
+<script src="<?=$path?>/views/script/jquery-3.2.1.min.js"></script> 
 <script>
     $(document).ready(function(){
         $('#id_box').change(function() {
@@ -14,7 +28,7 @@
             if(!str == '' || null){
                 data = {'name':str,'type':2};
                 $.ajax({
-                    url:"../../modules/lib/checkname.php", 
+                    url: "<?=$path?>/modules/lib/checkname.php", 
                     type: 'get',
                     data: data,
                 }).done(function(data){
@@ -33,19 +47,59 @@
             $('#check_msg').text('');
         });
     });
+</script>
 
+<script src="<?=$path?>/views/script/foundation/foundation.min.js"></script>
+<script>
+    $(document).foundation();
 </script>
 <body>
-    <!-- ここから -->
-    <div id="main">
-        <form action="../../modules/class/control/signup_band_control.php" method="post">
-            バンド名：<input type="text" name="band_name" id="name_box"><br>
-            パスワード：<input type="password" name="pass"><br>
-            mail<input type="email" name="email" id="bb"><br>
-            login id <input type="text" name="login_id" id="id_box"><span id="check_msg"></span><br>
-            <button type="submit">登録</button>
-        </form>
+    <?php 
+        include '../../views/tpl/header.php';
+    ?>
+    <div class="row">
+        <div class="large-12 column"> 
+            <h2>会員登録(バンド)</h2> 
+            <form action="<?=$path?>/modules/class/control/signup_band_control.php" method="post" class="form1">                
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>バンド名
+                            <input type="text" name="band_name" placeholder="insert name here" required/>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>パスワード
+                            <input type="password" name="pass" placeholder="insert password here" required/>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>メールアドレス
+                            <input type="email" name="email" placeholder="insert mail address here" required/>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>ログイン用ID　　(重複するIDは使用できません)
+                            <input type="text" id="id_box" name="login_id" placeholder="insert login id here" required/>
+                        </label>
+                        <span id="check_msg">&nbsp;</span>
+                    </div>
+                </div>
+
+                <p class="btn_wrap"><button type="submit"　class="submit_btn">登録</button></p>
+            </form>
+        </div>
     </div>
-    <!-- ここまでCSSを適用 -->
+    <footer>
+        
+    </footer>
 </body>
 </html>

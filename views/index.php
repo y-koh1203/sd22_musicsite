@@ -1,4 +1,5 @@
 <?php
+    $path = 'http://'.$_SERVER['HTTP_HOST'].'/sd22_musicsite';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -6,30 +7,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>まさる堂トップ</title>
-    <link rel="stylesheet" href="stylesheet/foundation/foundation.min.css">
-
-    <script src="script/jquery-3.2.1.min.js"></script>
-    <script src="script/foundation/foundation.min.js"></script>
-    <script>
-        $(document).foundation();
-    </script>
+    <title>TOP</title>
+    <link rel="stylesheet" href="<?=$path?>/views/stylesheet/foundation/foundation.min.css">
 </head>
+<script src="<?=$path?>/views/script/jquery-3.2.1.min.js"></script> 
+<script src="<?=$path?>/views/script/foundation/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+</script>
 <body>        
     <?php 
-    include 'tpl/header.php';
-    require $_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/modules/class/models/database.php';
+        include 'tpl/header.php';
     ?>
-    <?php
-        $pdo = new database();
-        $res = $pdo->select('select artwork_path,title,band_name from musics inner join bands on musics.band_id = bands.band_id');
-        foreach($res as $youso){
-            foreach($youso as $val){
-                echo $val."<br>"; 
-            }
-        }
-    ?>
-
-    <img src=<?=$_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/assets/artwork/sc.png'?> alt="">
 </body>
 </html>

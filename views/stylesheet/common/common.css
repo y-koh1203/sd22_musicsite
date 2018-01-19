@@ -1,0 +1,30 @@
+@charset 'UTF-8';
+
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header{
+    height: 10%;
+}
+
+.row{
+    margin-top: 1%;
+    min-height: 84%;
+}
+
+.content {
+  flex: 1;
+}
+
+footer{
+    margin-top:1%;
+    height: 14%;
+    width: 100%;
+    background: red;
+}
