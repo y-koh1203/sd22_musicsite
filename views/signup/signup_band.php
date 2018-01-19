@@ -18,6 +18,20 @@
         .btn_wrap{
             text-align: center;
         }
+
+        .flex_row_wrap{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .flex_col_wrap{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            background: blueviolet;
+            height: 100%;
+        }
     </style> 
 </head>
 <script src="<?=$path?>/views/script/jquery-3.2.1.min.js"></script> 
@@ -57,49 +71,49 @@
     <?php 
         include '../../views/tpl/header.php';
     ?>
-    <div class="row">
-        <div class="large-12 column"> 
-            <h2>会員登録(バンド)</h2> 
-            <form action="<?=$path?>/modules/class/control/signup_band_control.php" method="post" class="form1">                
-                <div class="row">
-                    <div class="large-12 columns">
-                        <label>バンド名
-                            <input type="text" name="band_name" placeholder="insert name here" required/>
-                        </label>
+    <div class="content">
+        <div class="row">
+            <div class="large-12 column"> 
+                <h2>会員登録(バンド)</h2> 
+                <form action="<?=$path?>/modules/class/control/signup_band_control.php" method="post" class="form1">                
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label>バンド名
+                                <input type="text" name="band_name" placeholder="insert name here" required/>
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="large-12 columns">
-                        <label>パスワード
-                            <input type="password" name="pass" placeholder="insert password here" required/>
-                        </label>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label>パスワード
+                                <input type="password" name="pass" placeholder="insert password here" required/>
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="large-12 columns">
-                        <label>メールアドレス
-                            <input type="email" name="email" placeholder="insert mail address here" required/>
-                        </label>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label>メールアドレス
+                                <input type="email" name="email" placeholder="insert mail address here" required/>
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="large-12 columns">
-                        <label>ログイン用ID　　(重複するIDは使用できません)
-                            <input type="text" id="id_box" name="login_id" placeholder="insert login id here" required/>
-                        </label>
-                        <span id="check_msg">&nbsp;</span>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label>ログイン用ID　　(重複するIDは使用できません)
+                                <input type="text" id="id_box" name="login_id" placeholder="insert login id here" required/>
+                            </label>
+                            <span id="check_msg">&nbsp;</span>
+                        </div>
                     </div>
-                </div>
 
-                <p class="btn_wrap"><button type="submit"　class="submit_btn">登録</button></p>
-            </form>
+                    <p class="btn_wrap"><button type="submit"　class="submit_btn">登録</button></p>
+                </form>
+            </div>
         </div>
     </div>
-    <footer>
-        
-    </footer>
+    <?php include '../tpl/footer.php';?>
 </body>
 </html>

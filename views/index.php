@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TOP</title>
     <link rel="stylesheet" href="<?=$path?>/views/stylesheet/foundation/foundation.min.css">
+    <link rel="stylesheet" href="<?=$path?>/views/stylesheet/common/common.css">
 </head>
 <script src="<?=$path?>/views/script/jquery-3.2.1.min.js"></script> 
 <script src="<?=$path?>/views/script/foundation/foundation.min.js"></script>
@@ -16,8 +17,9 @@
     $(document).foundation();
 </script>
 <body>        
-    <?php 
-        include 'tpl/header.php';
-    ?>
+    <?php include 'tpl/header.php';?>
+    <div class="content">
+    </div>
+    <?php include 'tpl/footer.php';?>
 </body>
 </html>

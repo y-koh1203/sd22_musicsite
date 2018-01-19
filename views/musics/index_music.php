@@ -15,7 +15,6 @@ $address =  $root.'assets/artwork/sc.png';
 </head>
 <body>
     <img src=<?=$address?> alt="">
-<<<<<<< HEAD
     <h1>楽曲一覧</h1>
     <table border="1">
         <tr>
@@ -29,8 +28,5 @@ $address =  $root.'assets/artwork/sc.png';
             ?>
         </tr>
     </table>
-=======
-    
->>>>>>> bde2eb96d032c0bab0b4f2bf0dee55d1053de66d
 </body>
 </html>
