@@ -61,6 +61,7 @@
         <div class="row">
             <div class="large-12 column"> 
                 <h2>会員登録(通常ユーザー)</h2> 
+                <hr>
                 <form action="<?=$path?>/modules/class/control/signup_control.php" method="post" class="form1">                
                     <div class="row">
                         <div class="large-12 columns">

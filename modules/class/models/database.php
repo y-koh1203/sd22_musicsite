@@ -92,15 +92,19 @@ class database{
             }     
         }
         $query .= ') values ('.$holder.') ;';
+        echo $query;
 
         $stmt = $pdo->prepare($query);
 
         if($cntDepth == 1){
             for($i = 0;$i <= $limit;$i++) {
+                echo $arrParams[$i].'<br>';
                 if (is_string($arrParams[$i])) {
                     $stmt->bindParam($arrBinders[$i], $arrParams[$i], PDO::PARAM_STR);
+                    echo $arrParams[$i].'<br>';
                 } else if (is_int($arrParams[$i])) {
                     $stmt->bindValue($arrBinders[$i], $arrParams[$i], PDO::PARAM_INT);
+                    echo $arrParams[$i].'<br>';
                 }
             }
             $stmt->execute();

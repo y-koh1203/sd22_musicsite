@@ -1,5 +1,4 @@
 <?php
-    session_start();
     $logon_flg = 0;
     $type = 0;
     
@@ -49,7 +48,7 @@
                             <li class="has-dropdown not-click"><a href="#">メニュー</a> 
                                 <ul class="dropdown">
                                     <li><a href="<?=$path?>/views/user/band_mypage.php">バンドマイページへ</a></li>
-                                    <li><a href="input.php">楽曲を登録</a></li>
+                                    <li><a href="<?=$path?>/views/musics/music_upload.php">楽曲を登録</a></li>
                                     <li><a href="<?=$path?>/modules/class/control/signout.php">ログアウト</a></li>
                                 </ul>
                             </li>

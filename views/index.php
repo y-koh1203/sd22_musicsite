@@ -1,5 +1,8 @@
 <?php
     $path = 'http://'.$_SERVER['HTTP_HOST'].'/sd22_musicsite';
+    if(!isset($_SESSION)){ 
+        session_start(); 
+    } 
 ?>
 <!DOCTYPE html>
 <html lang="ja">

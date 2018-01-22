@@ -7,23 +7,23 @@
             <li><a href="<?=$path?>/views/">item1</a></li>
             <li><a href="<?=$path?>/views/">item1</a></li>
         </ul>
-        <ul>
-            <li>item1</li>
-            <li>itme2</li>
-            <li>item3</li>
-            <li>item4</li>
+        <ul class="side-nav">
+            <li><a href="<?=$path?>/views/">item1</a></li>
+            <li><a href="<?=$path?>/views/">item1</a></li>
+            <li><a href="<?=$path?>/views/">item1</a></li>
+            <li><a href="<?=$path?>/views/">item1</a></li>
         </ul>
-        <ul>
-            <li>item1</li>
-            <li>itme2</li>
-            <li>item3</li>
-            <li>item4</li>
+        <ul class="side-nav">
+            <li><a href="<?=$path?>/views/">item1</a></li>
+            <li><a href="<?=$path?>/views/">item1</a></li>
+            <li><a href="<?=$path?>/views/">item1</a></li>
+            <li><a href="<?=$path?>/views/">item1</a></li>
         </ul>
-        <ul>
-            <li>item1</li>
-            <li>itme2</li>
-            <li>item3</li>
-            <li>item4</li>
+        <ul class="side-nav">
+            <li><a href="<?=$path?>/views/">item1</a></li>
+            <li><a href="<?=$path?>/views/">item1</a></li>
+            <li><a href="<?=$path?>/views/">item1</a></li>
+            <li><a href="<?=$path?>/views/">item1</a></li>
         </ul>
     </div>
     <p class="footer_head">まさる堂について</p>
