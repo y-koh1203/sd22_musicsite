@@ -12,7 +12,7 @@ $art_path = '../../../assets/artwork';
 $music_path = '../../../assets/musics';
 $band_id = $_SESSION['uid'];
 
-$img_ext_list = array("jpg","png","gif",'');
+$img_ext_list = array("jpg","png","gif");
 $music_ext_list = array("aac","mp3","mp4");
 
 $img_filename = "";
@@ -68,7 +68,7 @@ if($eflg == 1){
 
 echo $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING);
 echo $price = filter_input(INPUT_POST,'price',FILTER_SANITIZE_STRING);
-echo $genre_id = filter_input(INPUT_POST,'genre',FILTER_SANITIZE_EMAIL);
+echo $genre_id = filter_input(INPUT_POST,'genre',FILTER_SANITIZE_STRING);
 echo $time = filter_input(INPUT_POST,'play_time',FILTER_SANITIZE_STRING);
 echo $lyric = filter_input(INPUT_POST,'lyric',FILTER_SANITIZE_STRING);
 echo $today = date("Y-m-d H:i:s");   
@@ -76,7 +76,7 @@ echo $today = date("Y-m-d H:i:s");
 
 $table = 'musics';
 $col = array('band_id', 'genre_id', 'title', 'release_date', 'price', 'lyric', 'play_time', 'artwork_path', 'ex_status_id', 'release_status_id');
-$value = array($band_id,$title,$genre_id,$today,$price,$lyric,$time,$img_filename,'01','00');
+$value = array($band_id,$genre_id,$title,$today,$price,$lyric,$time,$img_filename,'01','00');
 $pdo->insert($table,$col,$value);
 
 $_SESSION['title'] = $title;

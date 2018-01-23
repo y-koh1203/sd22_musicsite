@@ -29,6 +29,7 @@
         exit();        
     }
 
+    session_destroy();
     session_start();
     $_SESSION['name'] = $res[0][$name];
     $_SESSION['uid'] = $res[0][$uid];

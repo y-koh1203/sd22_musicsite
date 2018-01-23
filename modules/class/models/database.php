@@ -8,7 +8,7 @@
  require $_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/modules/lib/util.php';
 
 class database{
-    private $dsn = 'mysql:host=127.0.0.1;port=3306;dbname=sd_master;';//左から,ホスト名,ポート番号,DB名
+    private $dsn = 'mysql:host=127.0.0.1;port=3306;dbname=sd_master;charset=utf8;';//左から,ホスト名,ポート番号,DB名
     private $user = 'root';// ユーザー名
     private $pass = '';//パスワード
     public $dbh; //DBハンドラ
@@ -100,7 +100,7 @@ class database{
             for($i = 0;$i <= $limit;$i++) {
                 echo $arrParams[$i].'<br>';
                 if (is_string($arrParams[$i])) {
-                    $stmt->bindParam($arrBinders[$i], $arrParams[$i], PDO::PARAM_STR);
+                    $stmt->bindValue($arrBinders[$i], $arrParams[$i], PDO::PARAM_STR);
                     echo $arrParams[$i].'<br>';
                 } else if (is_int($arrParams[$i])) {
                     $stmt->bindValue($arrBinders[$i], $arrParams[$i], PDO::PARAM_INT);
@@ -112,7 +112,7 @@ class database{
             for($i = 0;$i <= $lim2;$i++){
                 for($j = 0;$j <= $limit;$j++) {
                     if (is_string($arrParams[$i][$j])) {
-                        $stmt->bindParam($arrBinders[$j], $arrParams[$i][$j], PDO::PARAM_STR);
+                        $stmt->bindValue($arrBinders[$j], $arrParams[$i][$j], PDO::PARAM_STR);
                     } else if (is_int($arrParams[$i][$j])) {
                         $stmt->bindValue($arrBinders[$j], $arrParams[$i][$j], PDO::PARAM_INT);
                     }

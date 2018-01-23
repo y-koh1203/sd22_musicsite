@@ -17,7 +17,6 @@
 
     $sql = 'select * from genres ;';
     $genres = $pdo->select($sql);
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -29,6 +28,9 @@
     <link rel="stylesheet" href="<?=$path?>/views/stylesheet/foundation/foundation.min.css">
     <link rel="stylesheet" href="<?=$path?>/views/stylesheet/common/common.css">
     <style type="text/css">  
+
+        a:link { color: #ffff; }
+        
         .err_zone{
             margin:3% 0;
             color:red;

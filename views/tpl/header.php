@@ -10,11 +10,11 @@
 ?>
 <header>
     <div class="contain-to-grid sticky">
-        <nav class="top-bar">
+        <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
             <ul class="title-area">
                 <!-- Title Area -->
                 <li class="name">
-                <h1><a href="<?=$path?>/views">Masaru WEB</a></h1>
+                <h1><a href="<?=$path?>/views">Masaru MUSICS</a></h1>
                 </li>
                 <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
                 <!-- <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li> -->
@@ -31,6 +31,8 @@
                             <!-- 一般ユーザーがログインしている場合 -->
                             <li class="divider"></li>
                             <li class="name"><h2><a href="#"><?=$user_name?>さん</a></h2></li>
+                            <li class="divider"></li>
+                            <li class="name"><a href="<?=$path?>/views/shop/cart.php"><img src="<?=$path?>/assets/images/cart.svg" style="width:30px;height:30px;">カート</a></li>
                             <li class="divider"></li>
                             <li class="has-dropdown not-click"><a href="#">メニュー</a> 
                                 <ul class="dropdown">
