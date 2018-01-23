@@ -55,9 +55,9 @@
         }
 
         .thumb{
-            width:120px;
-            height:120px;
-            object-fit:contain;
+            width:150px;
+            height:150px;
+            object-fit:cover;
         }
 
         .wrap{
@@ -90,6 +90,8 @@
     <div class="content">
         <div class="row">
             <div class="large-12 column">
+                <h2>楽曲一覧</h2>
+                <hr>
                 <ul class="grid">
                 <?php
                 foreach($res as $v){

@@ -37,12 +37,12 @@ $res = $pdo->select($sql);
 
         .thumb{
             object-fit: cover;
-            width: 350px;
-            height: 350px;
+            width: 500px;
+            height: 500px;
         }
 
         .discription{
-            /* margin-top:14%; */
+            margin-top:10%;
         }
 
         .wrap{

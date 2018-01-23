@@ -20,9 +20,6 @@ $music_filename = "";
 $emsg = "";
 $eflg = 0;
 
-$res = $pdo->select('select (case when max(music_id) >= 1 then max(music_id) + 1 else 1 end) as new_id from musics;#written by Yoshida');
-$new_id = $res[0]['new_id'];
-
 for ($i=0; $i<count($_FILES['userfile']['name']); $i++) {
     $file_ext = pathinfo($_FILES["userfile"]["name"][$i], PATHINFO_EXTENSION);  
     if (!FileExtensionGetAllowUpload($file_ext)) {
@@ -38,18 +35,17 @@ for ($i=0; $i<count($_FILES['userfile']['name']); $i++) {
     $file_ext = pathinfo($_FILES["userfile"]["name"][$i], PATHINFO_EXTENSION);  
     if (FileExtensionGetAllowUpload($file_ext) &&  is_uploaded_file($_FILES["userfile"]["tmp_name"][$i])) {
         if(in_array($file_ext,$img_ext_list)){
-            if(move_uploaded_file($_FILES["userfile"]["tmp_name"][$i], $art_path.'/'.$new_id.'.'.$file_ext)) {
+            if(move_uploaded_file($_FILES["userfile"]["tmp_name"][$i], $art_path.'/'.$_FILES["userfile"]["name"][$i])) {
                 $emsg = $_FILES["userfile"]["name"][$i] . "をアップロードしました。<br>";
-                $img_filename = $new_id.'.'.$file_ext;
+                $img_filename = $_FILES["userfile"]["name"][$i];
             } else {
                 $emsg = "ファイルをアップロードできません。<br>";
                 $eflg = 1;           
             }
         }else if(in_array($file_ext,$music_ext_list)){
-            $file_music_ext = $file_ext;
-            if(move_uploaded_file($_FILES["userfile"]["tmp_name"][$i], $music_path.'/'.$new_id.'.'.$file_ext)) {
+            if(move_uploaded_file($_FILES["userfile"]["tmp_name"][$i], $music_path.'/'.$_FILES["userfile"]["name"][$i])) {
                 $emsg = $_FILES["userfile"]["name"][$i] . "をアップロードしました。<br>";
-                $music_filename = $new_id.'.'.$file_ext;
+                $music_filename = $_FILES["userfile"]["name"][$i];
             } else {
                 $emsg = "ファイルをアップロードできません。<br>";
                 $eflg = 1;
@@ -79,8 +75,8 @@ echo $today = date("Y-m-d H:i:s");
 
 
 $table = 'musics';
-$col = array('band_id', 'genre_id', 'title', 'release_date', 'price', 'lyric', 'play_time', 'artwork_path', 'ex_status_id', 'release_status_id','music_path','file_ext');
-$value = array($band_id,$genre_id,$title,$today,$price,$lyric,$time,$img_filename,'01','00',$music_filename,$file_music_ext);
+$col = array('band_id', 'genre_id', 'title', 'release_date', 'price', 'lyric', 'play_time', 'artwork_path', 'ex_status_id', 'release_status_id');
+$value = array($band_id,$genre_id,$title,$today,$price,$lyric,$time,$img_filename,'01','00');
 $pdo->insert($table,$col,$value);
 
 $_SESSION['title'] = $title;

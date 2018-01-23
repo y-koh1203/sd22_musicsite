@@ -1,6 +1,7 @@
 <?php
 $path = 'http://'.$_SERVER['HTTP_HOST'].'/sd22_musicsite';
 $img_path = '../../assets/artwork/';
+$mus_path = '../../assets/musics/';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/modules/class/models/database.php';
 
 $pdo = new database();
@@ -18,7 +19,7 @@ if(!isset($_SESSION)){
 $lim = count($all_music) - 1;
 $cnt = count($all_music);
 if($cnt != 0){
-    $sql = 'select music_id,artwork_path,title,band_name,price from musics inner join bands on musics.band_id = bands.band_id where music_id = ';
+    $sql = 'select music_id,artwork_path,title,band_name,music_path from musics inner join bands on musics.band_id = bands.band_id where music_id = ';
     if($cnt != 1){
         for($i = 0;$i < $cnt;$i++){
             if($i == $lim){
@@ -35,14 +36,6 @@ if($cnt != 0){
     $sql .= ' ;';
 
     $res = $pdo->select($sql);
-
-    $sum = 0;
-
-    foreach($res as $p){
-        $sum += $p['price'];
-    }
-
-    $_SESSION['sum'] = $sum;
 }
 ?>
 <!DOCTYPE html>
@@ -97,7 +90,7 @@ if($cnt != 0){
         <div class="content">
             <div class="row">
                 <div class="large-12 column">
-                    <h2>カート</h2>
+                    <h2>購入完了</h2>
                     <hr>
                 </div>
                 <?php
@@ -121,10 +114,11 @@ if($cnt != 0){
                                 <p><?=$v['band_name']?></p>
                             </label>
                             <hr>
-                            <label for="">価格</label>
-                                <p><?=$v['price']?> 円</p>
+                            <form action="download.php" method="post">
+                                <input type="hidden" value="<?=$v['music_id']?>" name="music_id">
+                                <button type="submit">楽曲をダウンロード</button>
+                            </form>
                             <hr>
-                            <a href="del_cart.php?del_id=<?=$v['music_id']?>">カートから削除</a>
                             </div>
                         </div> 
                         <hr> 
@@ -132,17 +126,7 @@ if($cnt != 0){
                         }
                         ?>
                     </div>
-                </div>
-                <div class="large-12 column flex_row">
-                    <span style="margin-top:1.5%;">合計価格：<?=$sum?> 円</span>
-                    <a href="purchase_check.php" class="button">レジに進む</a>
-                </div>
-                <?php
-                }else{
-                ?>
-                <div class="large-12 column">
-                    <h3>カートには何も入っていません</h3>
-                </div>
+                </div>   
                 <?php
                 }
                 ?>

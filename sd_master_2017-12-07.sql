@@ -19,7 +19,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE DATABASE sd_master;
+CREATE DATABASE sd_master CHARSET=utf8;
 USE sd_master;
 
 
@@ -435,6 +435,12 @@ VALUES
 
 /*!40000 ALTER TABLE `release_status` ENABLE KEYS */;
 UNLOCK TABLES;
+
+create table card_brands(
+ brand_id int(2) primary key auto_increment, 
+ brand_name varchar(20), 
+ term date default '9999-12-31' not null
+) default charset=utf8;#written by Yoshida.
 
 
 
