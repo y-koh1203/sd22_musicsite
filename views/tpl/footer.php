@@ -2,28 +2,18 @@
     <p class="footer_head">SITEMAP</p>
     <div class="flex_row_wrap">
         <ul class="side-nav">
-            <li><a href="<?=$path?>/views/">item1</a></li>
-            <li><a href="<?=$path?>/views/">item1</a></li>
-            <li><a href="<?=$path?>/views/">item1</a></li>
-            <li><a href="<?=$path?>/views/">item1</a></li>
+            <li><a href="<?=$path?>/views/">TOP</a></li>
+            <li><a href="<?=$path?>/views/">会員登録</a></li>
+            <li><a href="<?=$path?>/views/">ログイン</a></li>
         </ul>
         <ul class="side-nav">
-            <li><a href="<?=$path?>/views/">item1</a></li>
-            <li><a href="<?=$path?>/views/">item1</a></li>
-            <li><a href="<?=$path?>/views/">item1</a></li>
-            <li><a href="<?=$path?>/views/">item1</a></li>
+            <li><a href="<?=$path?>/views/">楽曲購入</a></li>
+            <li><a href="<?=$path?>/views/">楽曲アップロード</a></li>
         </ul>
         <ul class="side-nav">
-            <li><a href="<?=$path?>/views/">item1</a></li>
-            <li><a href="<?=$path?>/views/">item1</a></li>
-            <li><a href="<?=$path?>/views/">item1</a></li>
-            <li><a href="<?=$path?>/views/">item1</a></li>
-        </ul>
-        <ul class="side-nav">
-            <li><a href="<?=$path?>/views/">item1</a></li>
-            <li><a href="<?=$path?>/views/">item1</a></li>
-            <li><a href="<?=$path?>/views/">item1</a></li>
-            <li><a href="<?=$path?>/views/">item1</a></li>
+            <li><a href="<?=$path?>/views/">企業情報</a></li>
+            <li><a href="<?=$path?>/views/">採用情報</a></li>
+            <li><a href="<?=$path?>/views/">CSR</a></li>
         </ul>
     </div>
     <p class="footer_head">まさる堂について</p>

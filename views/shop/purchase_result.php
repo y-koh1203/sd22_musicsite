@@ -7,12 +7,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/sd22_musicsite/modules/class/models/d
 $pdo = new database();
 $res = array();
 $all_music = array();
+$uid = "";
+$param_array = array();
 
 if(!isset($_SESSION)){
     session_start();
 
     if(isset($_SESSION['music_id'])){
         $all_music = $_SESSION['music_id'];
+    }
+
+    if(isset($_SESSION['uid'])){
+        $uid = $_SESSION['uid'];
     }
 }
 
@@ -36,6 +42,24 @@ if($cnt != 0){
     $sql .= ' ;';
 
     $res = $pdo->select($sql);
+}
+
+$pdo->insert('profits',array('member_id','profits_date'),array($uid,date("Y-m-d H:i:s")));
+$pid = $pdo->select('select (case when max(profits_id) >= 1 then max(profits_id) else 1 end) as pid from profits');
+
+if($cnt > 1){
+    for($i = 0;$i < $cnt;$i++){
+        $arrp = array($pid[0]['pid'],$all_music[$i]);
+        array_push($param_array,$arrp);
+    }
+}else{
+    $arrp = array($pid[0]['pid'],$all_music[0]);
+    array_push($param_array,$arrp);
+}
+$pdo->insert('details',array('profits_id','music_id'),$param_array);
+
+if(isset($_SESSION['music_id'])){
+    unset($_SESSION['music_id']);
 }
 ?>
 <!DOCTYPE html>

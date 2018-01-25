@@ -7,7 +7,10 @@
     $utype="";
     $res = array();
 
-    $sql = 'select music_id,artwork_path,title,band_name from musics inner join bands on musics.band_id = bands.band_id';
+    $sql = 'select music_id,artwork_path,title,band_name 
+            from musics inner join bands on musics.band_id = bands.band_id
+            inner join examinted_status on musics.ex_status_id = examinted_status.ex_status_id
+            where musics.ex_status_id = "02" ';
     if(!isset($_SESSION)){ 
         session_start();
         //$utype = $_SESSION['type'];
@@ -92,19 +95,29 @@
             <div class="large-12 column">
                 <h2>楽曲一覧</h2>
                 <hr>
-                <ul class="grid">
                 <?php
-                foreach($res as $v){
+                if(count($res) != 0){
                 ?>
-                    <li class="cell">
-                        <p class="wrap"><a href="musics/music_detail.php?music_id=<?=$v['music_id']?>"><img src="<?=$img_path?><?=$v['artwork_path']?>" alt="" class="thumb"></a></p>
-                        <p class="wrap"><a href="musics/music_detail.php"><?=$v['title']?></a></p>
-                        <p class="wrap"><a href="musics/music_detail.php"><?=$v['band_name']?></a></p>
-                    </li>
+                    <ul class="grid">
+                    <?php
+                    foreach($res as $v){
+                    ?>
+                        <li class="cell">
+                            <p class="wrap"><a href="musics/music_detail.php?music_id=<?=$v['music_id']?>"><img src="<?=$img_path?><?=$v['artwork_path']?>" alt="" class="thumb"></a></p>
+                            <p class="wrap"><a href="musics/music_detail.php"><?=$v['title']?></a></p>
+                            <p class="wrap"><a href="musics/music_detail.php"><?=$v['band_name']?></a></p>
+                        </li>
+                    <?php
+                    }
+                    ?>
+                    </ul>
+                <?php
+                }else{
+                ?>
+                <p>公開中の楽曲はありません。</p>
                 <?php
                 }
                 ?>
-                </ul>
             </div>
         </div>
     </div>

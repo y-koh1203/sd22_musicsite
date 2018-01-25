@@ -37,16 +37,20 @@ $res = $pdo->select($sql);
 
         .thumb{
             object-fit: cover;
-            width: 500px;
-            height: 500px;
+            width: 350px;
+            height: 350px;
         }
 
         .discription{
-            margin-top:10%;
+            margin-top:7%;
         }
 
         .wrap{
             text-align:center;
+        }
+
+        .disp{
+            margin-top:4%;
         }
     </style>
 </head>
@@ -78,7 +82,7 @@ $res = $pdo->select($sql);
     <?php include '../tpl/header.php';?>
     <div class="content">
         <div class="row">
-            <div class="large-12 column">
+            <div class="large-12 column disp">
                 <h2>楽曲詳細</h2>
                 <hr>
             </div>
@@ -102,18 +106,20 @@ $res = $pdo->select($sql);
                 <label for="">再生時間</label>
                 <p><?=$v['play_time']?></p>
                 <hr>
-                <?php
-                if($utype == 1){
-                ?>
-                <!-- <p class="wrap"><button type="button">カートに追加</button></p> -->
-                <a href="#" class="button expand addcart">カートに追加</a>
-                <?php
-                }
-                ?>
             </div>
             <?php
             }
             ?>
+            <div class="large-12 columns wrap">
+                <?php
+                if($utype == 1){
+                ?>
+                <!-- <p class="wrap"><button type="button">カートに追加</button></p> -->
+                <a href="#" class="button large addcart">カートに追加</a>
+                <?php
+                }
+                ?>
+            </div>
         </div>
     </div>
     <?php include '../tpl/footer.php';?>

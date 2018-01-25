@@ -49,10 +49,10 @@ if(!isset($_SESSION)){
                 <h3 class="text-center">楽曲タイトル：<?=$title?></h3>
                 <div class="btn_area">
                     <p class="btn_wrap">
-                        <button type="button"><a href="<?=$path?>/views/user/band_mypage.php">バンドマイページへ</a></button>
+                        <a href="<?=$path?>/views/user/band_mypage.php" class="button">バンドマイページへ</a>
                     </p>
                     <p class="btn_wrap">
-                        <button type="button"><a href="<?=$path?>/views/">トップページへ</a></button>
+                        <a href="<?=$path?>/views/" class="button">トップページへ</a>
                     </p>
                 </div>
             </div>

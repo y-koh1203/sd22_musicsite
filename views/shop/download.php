@@ -28,4 +28,3 @@ header('Content-Disposition: filename="'.$filename.'"');
 // ファイルを読み込みダウンロードを実行
 readfile($filepath);
 exit();
-?>
